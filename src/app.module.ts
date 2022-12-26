@@ -7,10 +7,12 @@ import { CatsModule } from './cats/cats.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(process.env.MONGODB_URI),
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    MongooseModule.forRoot(
+      'mongodb+srv://fkstndnjs:ZjJAKSk2Rg7KKwbG@firstproject.dwoalfb.mongodb.net/test',
+    ),
     CatsModule,
   ],
   controllers: [AppController],
