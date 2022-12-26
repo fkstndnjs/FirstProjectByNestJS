@@ -15,28 +15,12 @@ import { UpdateCatDto } from './dto/update-cat.dto';
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
-  @Post()
-  create(@Body() createCatDto: CreateCatDto) {
-    return this.catsService.create(createCatDto);
-  }
-
   @Get()
-  findAll() {
-    return this.catsService.findAll();
-  }
+  getCurrentCats() {}
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.catsService.findOne(+id);
-  }
+  @Post()
+  async signUp() {}
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCatDto: UpdateCatDto) {
-    return this.catsService.update(+id, updateCatDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.catsService.remove(+id);
-  }
+  @Post()
+  logIn() {}
 }
