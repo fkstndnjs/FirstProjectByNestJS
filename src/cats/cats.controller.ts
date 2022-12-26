@@ -18,9 +18,12 @@ export class CatsController {
   @Get()
   getCurrentCats() {}
 
-  @Post()
+  @Post('signup')
   async signUp() {}
 
-  @Post()
+  @Post('login')
   logIn() {}
+
+  @Post('logout')
+  logOut() {}
 }
