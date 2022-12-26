@@ -29,7 +29,7 @@ export class CatsService {
       email,
     });
 
-    return 'cat';
+    return cat;
   }
 
   findAll() {
