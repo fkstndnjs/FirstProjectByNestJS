@@ -9,7 +9,9 @@ import { UpdateCatDto } from './dto/update-cat.dto';
 export class CatsService {
   constructor(@InjectModel(Cat.name) private readonly catModel: Model<Cat>) {}
 
-  create(createCatDto: CreateCatDto) {
+  signup(Body: CreateCatDto) {
+    const { name, password, email } = body;
+
     return 'This action adds a new cat';
   }
 
