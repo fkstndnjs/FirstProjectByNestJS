@@ -7,9 +7,7 @@ import { CatsModule } from './cats/cats.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://fkstndnjs:dbtjrgus7@@nest.m8wgg3n.mongodb.net/cats?retryWrites=true&w=majority',
-    ),
+    MongooseModule.forRoot(process.env.MONGODB_URI),
     ConfigModule.forRoot(),
     CatsModule,
   ],
