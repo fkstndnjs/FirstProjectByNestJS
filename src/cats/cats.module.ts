@@ -4,7 +4,6 @@ import { CatsController } from './cats.controller';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [ConfigModule.forRoot()],
   controllers: [CatsController],
   providers: [CatsService],
 })
