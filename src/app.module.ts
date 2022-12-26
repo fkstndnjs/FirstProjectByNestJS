@@ -7,9 +7,7 @@ import { CatsModule } from './cats/cats.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-    }),
+    ConfigModule.forRoot(),
     MongooseModule.forRoot(process.env.MONGODB_URI),
     CatsModule,
   ],
