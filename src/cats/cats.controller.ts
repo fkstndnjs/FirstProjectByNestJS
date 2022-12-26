@@ -22,9 +22,6 @@ export class CatsController {
 
   @Get()
   findAll() {
-    console.log('🚀 ---------------------------------------🚀');
-    console.log('🚀 ~ process.env.PORT', process.env.PORT);
-    console.log('🚀 ---------------------------------------🚀');
     return this.catsService.findAll();
   }
 
