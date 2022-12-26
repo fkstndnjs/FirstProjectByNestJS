@@ -19,7 +19,10 @@ export class CatsController {
   getCurrentCats() {}
 
   @Post('signup')
-  async signUp() {}
+  async signUp(@Body() body: any) {
+    console.log(body);
+    return 'signup';
+  }
 
   @Post('login')
   logIn() {}
