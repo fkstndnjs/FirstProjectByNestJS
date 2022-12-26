@@ -26,4 +26,7 @@ export class CatsController {
 
   @Post('logout')
   logOut() {}
+
+  @Post('upload')
+  uploadCatImg() {}
 }
