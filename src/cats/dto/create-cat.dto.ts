@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import {
   IsString,
   IsEmail,
@@ -7,6 +8,11 @@ import {
 } from 'class-validator';
 
 export class CreateCatDto {
+  @ApiProperty({
+    example: 'SeokHyun Yu',
+    description: 'name',
+    required: true,
+  })
   @IsString()
   @IsNotEmpty()
   name: string;
