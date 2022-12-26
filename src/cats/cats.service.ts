@@ -23,13 +23,13 @@ export class CatsService {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const cat = await this.catModel.create({
+    const cat: any = await this.catModel.create({
       name,
       password: hashedPassword,
       email,
     });
 
-    return { ...cat, password: '***' };
+    return { ...cat._doc, password: '***' };
   }
 
   findAll() {
