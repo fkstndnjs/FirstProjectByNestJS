@@ -6,8 +6,9 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
@@ -24,7 +25,7 @@ export class CatsController {
     summary: '회원가입',
   })
   @Post('signup')
-  async signUp(@Body() body: CreateCatDto) {
+  async signUp(@Body() body: CreateCatDto, @Query('role') role: string) {
     return await this.catsService.signup(body);
   }
 
