@@ -1,9 +1,14 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Cat } from './cats.schema';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
 
 @Injectable()
 export class CatsService {
+  constructor(@InjectModel(Cat.name) private readonly catModel: Model<Cat>) {}
+
   create(createCatDto: CreateCatDto) {
     return 'This action adds a new cat';
   }
