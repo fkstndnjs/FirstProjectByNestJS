@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { Cat } from './cats.schema';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
+import bcrypt from 'bcrypt';
 
 @Injectable()
 export class CatsService {
@@ -19,7 +20,16 @@ export class CatsService {
     if (isCatExist) {
       throw new HttpException('이미 존재하는 계정입니다.', 409);
     }
-    return 'This action adds a new cat';
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const cat = await this.catModel.create({
+      name,
+      password: hashedPassword,
+      email,
+    });
+
+    return 'cat';
   }
 
   findAll() {
