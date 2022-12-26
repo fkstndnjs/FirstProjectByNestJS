@@ -4,7 +4,7 @@ import { Model } from 'mongoose';
 import { Cat } from './cats.schema';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
-import bcrypt from 'bcrypt';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class CatsService {
