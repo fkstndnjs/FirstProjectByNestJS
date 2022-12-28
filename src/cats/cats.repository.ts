@@ -20,7 +20,7 @@ export class CatsRepository {
           throw new HttpException(err, 500);
         }
 
-        isExist = !!data._id;
+        isExist = !!data;
       },
     );
 

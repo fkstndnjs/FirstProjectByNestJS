@@ -14,7 +14,7 @@ export class CatsService {
   async signup(body: CreateCatDto) {
     const { name, password, email, imgUrl } = body;
 
-    const isCatExist = await this.catsRepository.checkExistsByEmail(email);
+    await this.catsRepository.checkExistsByEmail(email);
 
     if (isCatExist) {
       throw new HttpException('이미 존재하는 계정입니다.', 409);
