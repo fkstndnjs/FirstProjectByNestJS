@@ -8,21 +8,17 @@ export class CatsRepository {
   constructor(@InjectModel(Cat.name) private readonly catModel: Model<Cat>) {}
 
   async checkExistsByEmail(email: string): Promise<boolean> {
-    try {
-      const result = await this.catModel.exists(
-        {
-          email,
-        },
-        (err, data) => {
-          if (err) {
-            throw new HttpException(err, 500);
-          }
+    const result = await this.catModel.exists(
+      {
+        email,
+      },
+      (err, data) => {
+        if (err) {
+          throw new HttpException(err, 500);
+        }
 
-          return result;
-        },
-      );
-    } catch (err) {
-      throw new HttpException(err, 500);
-    }
+        return result;
+      },
+    );
   }
 }
