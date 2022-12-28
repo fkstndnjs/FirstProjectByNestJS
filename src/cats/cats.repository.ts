@@ -8,23 +8,10 @@ import { CreateCatDto } from './dto/create-cat.dto';
 export class CatsRepository {
   constructor(@InjectModel(Cat.name) private readonly catModel: Model<Cat>) {}
 
-  async checkExistsByEmail(email: string): Promise<boolean> {
-    let isExist: boolean;
-
-    await this.catModel.exists(
-      {
-        email,
-      },
-      (err, data) => {
-        if (err) {
-          throw new HttpException('이미 존재하는 계정입니다.', 409);
-        }
-
-        isExist = !!data;
-      },
-    );
-
-    return isExist;
+  async checkExistsByEmail(email: string): Promise<void> {
+    await this.catModel.exists({
+      email,
+    });
   }
 
   async createCat(cat: CreateCatDto) {
