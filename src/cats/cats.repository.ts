@@ -2,6 +2,7 @@ import { HttpException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Cat } from './cats.schema';
+import { CreateCatDto } from './dto/create-cat.dto';
 
 @Injectable()
 export class CatsRepository {
@@ -24,5 +25,16 @@ export class CatsRepository {
     );
 
     return isExist;
+  }
+
+  async createCat(cat: CreateCatDto) {
+    const createdCat: any = await this.catModel.create({
+      name: cat.name,
+      password: cat.password,
+      email: cat.email,
+      imgUrl: cat.imgUrl,
+    });
+
+    return createdCat;
   }
 }

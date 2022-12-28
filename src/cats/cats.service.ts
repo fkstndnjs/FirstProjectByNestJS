@@ -12,7 +12,7 @@ export class CatsService {
   constructor(private readonly catsRepository: CatsRepository) {}
 
   async signup(body: CreateCatDto) {
-    const { name, password, email } = body;
+    const { name, password, email, imgUrl } = body;
 
     const isCatExist = await this.catsRepository.checkExistsByEmail(email);
 
@@ -22,10 +22,11 @@ export class CatsService {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const cat: any = await this.catModel.create({
+    const cat = await this.catsRepository.createCat({
       name,
       password: hashedPassword,
       email,
+      imgUrl,
     });
 
     return { ...cat._doc, password: '***' };
