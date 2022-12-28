@@ -16,10 +16,6 @@ export class CatsService {
 
     await this.catsRepository.checkExistsByEmail(email);
 
-    if (isCatExist) {
-      throw new HttpException('이미 존재하는 계정입니다.', 409);
-    }
-
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const cat = await this.catsRepository.createCat({
