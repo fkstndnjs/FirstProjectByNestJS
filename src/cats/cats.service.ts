@@ -14,23 +14,21 @@ export class CatsService {
   async signup(body: CreateCatDto) {
     const { name, password, email } = body;
 
-    // const isCatExist = await this.catModel.exists({
-    //   email,
-    // });
+    const isCatExist = await this.catsRepository.checkExistsByEmail(email);
 
-    // if (isCatExist) {
-    //   throw new HttpException('이미 존재하는 계정입니다.', 409);
-    // }
+    if (isCatExist) {
+      throw new HttpException('이미 존재하는 계정입니다.', 409);
+    }
 
-    // const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    // const cat: any = await this.catModel.create({
-    //   name,
-    //   password: hashedPassword,
-    //   email,
-    // });
+    const cat: any = await this.catModel.create({
+      name,
+      password: hashedPassword,
+      email,
+    });
 
-    // return { ...cat._doc, password: '***' };
+    return { ...cat._doc, password: '***' };
   }
 
   findAll() {
