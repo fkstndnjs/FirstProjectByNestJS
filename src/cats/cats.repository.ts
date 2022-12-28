@@ -14,7 +14,9 @@ export class CatsRepository {
           email,
         },
         (err, data) => {
-          throw new HttpException(err, 500);
+          if (err) {
+            throw new HttpException(err, 500);
+          }
           return result;
         },
       );
