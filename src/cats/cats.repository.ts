@@ -17,7 +17,7 @@ export class CatsRepository {
       },
       (err, data) => {
         if (err) {
-          throw new HttpException(err, 500);
+          throw new HttpException('이미 존재하는 계정입니다.', 409);
         }
 
         isExist = !!data;
