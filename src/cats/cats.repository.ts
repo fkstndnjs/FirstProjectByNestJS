@@ -8,10 +8,12 @@ import { CreateCatDto } from './dto/create-cat.dto';
 export class CatsRepository {
   constructor(@InjectModel(Cat.name) private readonly catModel: Model<Cat>) {}
 
-  async checkExistsByEmail(email: string): Promise<void> {
-    await this.catModel.exists({
+  async checkExistsByEmail(email: string): Promise<boolean> {
+    const cat = await this.catModel.exists({
       email,
     });
+
+    return !!cat;
   }
 
   async createCat(cat: CreateCatDto) {
