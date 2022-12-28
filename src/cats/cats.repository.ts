@@ -15,10 +15,9 @@ export class CatsRepository {
         },
         (err, data) => {
           throw new HttpException(err, 500);
+          return result;
         },
       );
-
-      return result;
     } catch (err) {
       throw new HttpException(err, 500);
     }
