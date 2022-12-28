@@ -17,6 +17,7 @@ export class CatsRepository {
           if (err) {
             throw new HttpException(err, 500);
           }
+
           return result;
         },
       );
