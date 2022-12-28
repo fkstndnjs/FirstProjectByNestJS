@@ -9,9 +9,16 @@ export class CatsRepository {
 
   async checkExistsByEmail(email: string): Promise<boolean> {
     try {
-      const result = await this.catModel.exists({
-        email,
-      });
+      const result = await this.catModel.exists(
+        {
+          email,
+        },
+        (err, data) => {
+          throw new HttpException(err, 500);
+        },
+      );
+
+      return result;
     } catch (err) {
       throw new HttpException(err, 500);
     }
